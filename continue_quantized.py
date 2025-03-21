@@ -26,7 +26,7 @@ inputs = tokenizer(input_text, return_tensors="pt").to(device)
 past_key_values = torch.load('data/cache/prompt.pth')
 
 quantized_past_key_values = tuple(
-    (k.to(torch.int8), v.to(torch.int8)) for k, v in past_key_values
+    (k.to(torch.float16), v.to(torch.float16)) for k, v in past_key_values
 )
 
 # Monitor GPU memory before generating
@@ -55,13 +55,13 @@ print(f"Generation time: {generation_time:.2f} seconds")
 
 
 generated_text = tokenizer.decode(outputs.sequences[0], skip_special_tokens=True)
-with open("data/text/int8.txt", "w") as file:
+with open("data/text/float16.txt", "w") as file:
     file.write(generated_text)
 
 # Access the key-value cache (past_key_values) from the outputs
 past_key_values = outputs.past_key_values
 quantized_past_key_values = tuple(
-    (k.to(torch.int8), v.to(torch.int8)) for k, v in past_key_values
+    (k.to(torch.float16), v.to(torch.float16)) for k, v in past_key_values
 )
 
-torch.save(quantized_past_key_values, 'data/cache/int8.pth')
+torch.save(quantized_past_key_values, 'data/cache/float16.pth')
