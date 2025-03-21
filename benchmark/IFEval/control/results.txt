@@ -1,0 +1,76 @@
+================================================================
+../kvcache/results/eval_results_strict.jsonl Accuracy Scores:
+prompt-level: 0.24
+instruction-level: 0.3684210526315789
+
+change_case 0.2
+combination 0.8333333333333334
+detectable_content 1.0
+detectable_format 0.35714285714285715
+keywords 0.4375
+language 0.0
+length_constraints 0.4166666666666667
+punctuation 0.16666666666666666
+startend 0.0
+
+change_case:capital_word_frequency 1.0
+change_case:english_capital 0.0
+change_case:english_lowercase 0.0
+combination:repeat_prompt 1.0
+combination:two_responses 0.6666666666666666
+detectable_content:number_placeholders 1.0
+detectable_content:postscript 1.0
+detectable_format:json_format 0.0
+detectable_format:multiple_sections 0.0
+detectable_format:number_bullet_lists 0.0
+detectable_format:number_highlighted_sections 1.0
+detectable_format:title 1.0
+keywords:existence 1.0
+keywords:forbidden_words 0.0
+keywords:frequency 0.4
+keywords:letter_frequency 0.5
+language:response_language 0.0
+length_constraints:number_paragraphs 0.6666666666666666
+length_constraints:number_sentences 0.0
+length_constraints:number_words 0.375
+punctuation:no_comma 0.16666666666666666
+startend:end_checker 0.0
+startend:quotation 0.0
+================================================================
+../kvcache/results/eval_results_loose.jsonl Accuracy Scores:
+prompt-level: 0.3
+instruction-level: 0.4342105263157895
+
+change_case 0.2
+combination 0.8333333333333334
+detectable_content 1.0
+detectable_format 0.5
+keywords 0.5625
+language 0.0
+length_constraints 0.5
+punctuation 0.16666666666666666
+startend 0.0
+
+change_case:capital_word_frequency 1.0
+change_case:english_capital 0.0
+change_case:english_lowercase 0.0
+combination:repeat_prompt 1.0
+combination:two_responses 0.6666666666666666
+detectable_content:number_placeholders 1.0
+detectable_content:postscript 1.0
+detectable_format:json_format 0.4
+detectable_format:multiple_sections 0.0
+detectable_format:number_bullet_lists 0.0
+detectable_format:number_highlighted_sections 1.0
+detectable_format:title 1.0
+keywords:existence 1.0
+keywords:forbidden_words 0.5
+keywords:frequency 0.4
+keywords:letter_frequency 0.5
+language:response_language 0.0
+length_constraints:number_paragraphs 0.6666666666666666
+length_constraints:number_sentences 0.0
+length_constraints:number_words 0.5
+punctuation:no_comma 0.16666666666666666
+startend:end_checker 0.0
+startend:quotation 0.0

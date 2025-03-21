@@ -17,7 +17,7 @@ model_name = "Qwen/Qwen2-0.5B-Instruct"  # Replace with your model's name
 model = AutoModelForCausalLM.from_pretrained(model_name).to(device)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-with open('data/prompt.txt', 'r') as file:
+with open('data/text/prompt.txt', 'r') as file:
     input_text = file.read()
 
 # Tokenize the input
@@ -25,7 +25,7 @@ inputs = tokenizer(input_text, return_tensors="pt").to(device)
 
 
 # Loading the past_key_values from the file
-past_key_values = torch.load('data/prompt.pth')
+past_key_values = torch.load('data/cache/prompt.pth')
 
 
 # Monitor GPU memory before generating
