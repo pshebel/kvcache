@@ -1,9 +1,8 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from utilities.common import read_if, write_if,write_meta, get_gpu_memory
+from utilities.kv_error import CustomQuantConfig, CustomQuantizer
 import time
-
-
 
 # if eval https://arxiv.org/pdf/2311.07911
 
@@ -15,13 +14,18 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="cuda", 
 )
 
+custom_quant_config = CustomQuantConfig(bits=8, group_size=64)
+quantizer = CustomQuantizer(custom_quant_config)
+model = quantizer.quantize_model(model)
+
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 data = read_if('IFEval/input_data.jsonl')
 times = []
 mem = []
+    
 
-for prompt in data:
+for prompt in data: 
     inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
 
     start_time = time.time()
@@ -39,8 +43,6 @@ for prompt in data:
 
 
     generated_text = tokenizer.decode(outputs[0])
-    write_if("IFEval/control/input_response_data.jsonl", prompt, generated_text)
+    write_if("IFEval/error/8/input_response_data.jsonl", prompt, generated_text)
 
-write_meta("IFEval/control/metadata.json", times, mem)
-
-
+write_meta("IFEval/error/8/metadata.json", times, mem)
