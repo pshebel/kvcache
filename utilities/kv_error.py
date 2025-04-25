@@ -52,6 +52,7 @@ class CustomQuantizer:
         
         # Add noise to weights
         weight_with_error = weight + uniform_noise
+        print(f"weight {weight} error: {uniform_noise} weight with error {weight_with_error}")
         
                 
         return weight_with_error.reshape(org_shape)
